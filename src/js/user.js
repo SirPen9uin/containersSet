@@ -9,3 +9,33 @@ export function loadUser(id) {
 export function saveUser(user) {
   throw new Error('Unimplemented');
 }
+
+export class Team {
+  constructor() {
+    this.members = new Set();
+  }
+
+  add(person) {
+    if (this.members.has(person)) {
+      throw new Error ('This person has been already figthing for you')
+    }
+    this.members.add(person)
+  }
+
+  addAll(...array) {
+    array.forEach(hero => {
+      this.add(hero)
+    })
+  }
+
+  toArray() {
+    return Array.from(this.members)
+  }
+}
+
+export class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
